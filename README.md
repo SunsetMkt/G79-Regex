@@ -1,2 +1,2 @@
 # G79-Regex
-Local sensitive word regular expression for the g79 client
+Since a decryption tool corresponding to `g79_regex` has already been provided, this repository will no longer maintain updates for standalone versions.
