@@ -2,9 +2,15 @@ import json
 import re
 
 
-def unescape_line(line):
-    # TODO: implement
-    return line
+def unescape_line(s):
+    def replacer(match):
+        # TODO: implement unescape
+        hex_code = match.group(1)
+        code_point = int(hex_code, 16)
+        return chr(code_point)
+
+    # Match \x{XXXX}
+    return re.sub(r"\\x\{([0-9a-fA-F]+)\}", replacer, s)
 
 
 def sort_dict_by_key(d):
