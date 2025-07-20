@@ -2,12 +2,22 @@ import json
 import re
 
 
+def shift_cjk_chars(text):
+    result = []
+    for ch in text:
+        code = ord(ch)
+        if (19968 + 1) <= code <= (40959 + 1):
+            result.append(chr(code - 1))
+        else:
+            result.append(ch)
+    return "".join(result)
+
+
 def unescape_line(s):
     def replacer(match):
-        # TODO: implement unescape
         hex_code = match.group(1)
         code_point = int(hex_code, 16)
-        return chr(code_point)
+        return shift_cjk_chars(chr(code_point))
 
     # Match \x{XXXX}
     return re.sub(r"\\x\{([0-9a-fA-F]+)\}", replacer, s)
