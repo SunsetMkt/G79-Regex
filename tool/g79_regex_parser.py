@@ -25,7 +25,8 @@ def unescape_line(s):
 
 def sort_dict_by_key(d):
     out = []
-    for key in sorted(d.keys()):
+    sorted_keys = sorted(d.keys(), key=int)
+    for key in sorted_keys:
         out.append(unescape_line(d[key]))
     return out
 
